@@ -1,5 +1,5 @@
-export default async function Weather({ zip }) {
-	const data = await getServerData(zip); // get data from server using zip
+export default async function Weather({ params }) {
+	const data = await getServerData({ params });
 	return (
 		// return data to client
 		<div>
@@ -9,10 +9,9 @@ export default async function Weather({ zip }) {
 	);
 }
 
-const getServerData = async () => {
+const getServerData = async ({ params }) => {
+	const { zip } = params;
 	const apikey = "953739c7d481ca70528216e22f0966f5";
-
-	const zip = "94547";
 
 	const response = await fetch(
 		`https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apikey}&units=imperial`
