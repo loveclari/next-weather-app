@@ -28,6 +28,8 @@ export default async function Weather({ params }) {
 	const optionsTime = { hour: "2-digit", minute: "2-digit", hour12: true };
 	const optionsDate = { weekday: "long", month: "long", day: "numeric" };
 
+	const date = new Date().toLocaleDateString(undefined, optionsDate);
+
 	return (
 		// return data to client
 		<div className={styles.weatherapp}>
@@ -43,6 +45,7 @@ export default async function Weather({ params }) {
 					).toLocaleTimeString(undefined, optionsTime);
 					return (
 						<div key={index} className={styles.card}>
+							<h3>{date}</h3>
 							<h3>{time}</h3>
 							<h3>{Math.round(forecast.main.temp)}&deg; F</h3>
 							<p>{forecast.weather[0].description}</p>
