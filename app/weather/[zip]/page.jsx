@@ -12,6 +12,7 @@ export default async function Weather({ params }) {
 	const weatherdata = await getServerData({ params });
 
 	const city = weatherdata.city.name;
+	const temperature = Math.round(weatherdata.list[0].main.temp);
 	const today = new Date().getDate();
 
 	const todayForecast = weatherdata.list.filter(
@@ -22,20 +23,27 @@ export default async function Weather({ params }) {
 		(forecast) => new Date(forecast.dt * 1000).getDate() !== today
 	);
 
+	const optionsTime = { hour: "numeric", minute: "numeric", hour12: true };
+	const optionsDate = { weekday: "long", month: "long", day: "numeric" };
+
 	return (
 		// return data to client
 		<div>
 			<div>
-				<h1>This is your main Weather</h1>
-				<h2>Page Zip Code: {city}</h2>
+				<h1>{city}</h1>
+				<h2>{temperature}&deg; F</h2>
 			</div>
 			<h3>Today's Weather</h3>
 			<div>
 				{todayForecast.map((forecast, index) => {
+					const time = new Date(
+						forecast.dt * 1000
+					).toLocaleTimeString(undefined, optionsTime);
 					return (
 						<div key={index}>
 							<div>{forecast.dt_txt}</div>
-							<div>{forecast.main.temp}</div>
+							<div>{Math.round(forecast.main.temp)}&deg; F</div>
+							<div>{forecast.weather[0].description}</div>
 						</div>
 					);
 				})}
@@ -44,10 +52,19 @@ export default async function Weather({ params }) {
 			<h3>Next 5 Days Weather</h3>
 			<div>
 				{nextDaysForecast.map((forecast, index) => {
+					const date = new Date(
+						forecast.dt * 1000
+					).toLocaleDateString(undefined, optionsDate);
+					const time = new Date(
+						forecast.dt * 1000
+					).toLocaleTimeString(undefined, optionsTime);
 					return (
 						<div key={index}>
 							<div>{forecast.dt_txt}</div>
-							<div>{forecast.main.temp}</div>
+							<h3>{date}</h3>
+							<h3>{time}</h3>
+							<div>{Math.round(forecast.main.temp)}&deg; F</div>
+							<div>{forecast.weather[0].description}</div>
 						</div>
 					);
 				})}
