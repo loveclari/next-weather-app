@@ -1,0 +1,40 @@
+.weatherapp {
+	height: 100%;
+	background: linear-gradient(to right, #56ccf2, #2f80ed);
+	color: #ffffff;
+}
+
+.weatherapp h1 {
+	display: flex;
+	justify-content: center;
+}
+
+.weatherapp h2 {
+	display: flex;
+	justify-content: center;
+	margin: 25px;
+}
+
+.weatherapp h3 {
+	padding: 20px 0px;
+}
+
+.weatherapp .header {
+	padding-left: 20px;
+	display: inline-flex;
+	margin: auto;
+}
+
+.weatherapp .container {
+	display: flex;
+	overflow: scroll;
+}
+
+.weatherapp .card {
+	border: 1px solid #ddd;
+	padding: 10px;
+	border-radius: 5px;
+	width: 150px;
+	text-align: center;
+	min-height: 200px;
+}

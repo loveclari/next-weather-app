@@ -8,6 +8,8 @@
 // - If you can deploy the codebase to github and share a link, and ideally host the solution on Vercel
 // - Design of the pages is up to you! This isn't a design challenge, but pages should be easy to understand and informative. A user landing on a random page should be able to understand what they're seeing.
 
+import styles from "./weather.module.css";
+
 export default async function Weather({ params }) {
 	const weatherdata = await getServerData({ params });
 
@@ -28,19 +30,19 @@ export default async function Weather({ params }) {
 
 	return (
 		// return data to client
-		<div>
-			<div>
+		<div className={styles.weatherapp}>
+			<div className={styles.header}>
 				<h1>{city}</h1>
 				<h2>{temperature}&deg; F</h2>
 			</div>
 			<h3>Today's Weather</h3>
-			<div>
+			<div className={styles.container}>
 				{todayForecast.map((forecast, index) => {
 					const time = new Date(
 						forecast.dt * 1000
 					).toLocaleTimeString(undefined, optionsTime);
 					return (
-						<div key={index}>
+						<div key={index} className={styles.card}>
 							<div>{forecast.dt_txt}</div>
 							<div>{Math.round(forecast.main.temp)}&deg; F</div>
 							<div>{forecast.weather[0].description}</div>
@@ -50,7 +52,7 @@ export default async function Weather({ params }) {
 			</div>
 
 			<h3>Next 5 Days Weather</h3>
-			<div>
+			<div className={styles.container}>
 				{nextDaysForecast.map((forecast, index) => {
 					const date = new Date(
 						forecast.dt * 1000
@@ -59,7 +61,7 @@ export default async function Weather({ params }) {
 						forecast.dt * 1000
 					).toLocaleTimeString(undefined, optionsTime);
 					return (
-						<div key={index}>
+						<div key={index} className={styles.card}>
 							<div>{forecast.dt_txt}</div>
 							<h3>{date}</h3>
 							<h3>{time}</h3>
