@@ -1,25 +1,35 @@
 .weatherapp {
 	height: 100%;
-	padding: 20px;
+	padding: 0px 20px;
 	background: linear-gradient(to right, #56ccf2, #2f80ed);
 	color: #ffffff;
+	font-family: "Lato", sans-serif;
 }
 
 .weatherapp h1 {
 	display: flex;
-	font-size: 3rem;
+	font-size: 5rem;
 	justify-content: center;
 }
 
 .weatherapp h2 {
 	display: flex;
-	font-size: 3rem;
+	font-size: 5rem;
 	justify-content: center;
 	margin: 25px;
 }
 
 .weatherapp h3 {
 	padding: 20px 0px;
+}
+
+.weatherapp .card h3:nth-child(1) {
+	font-size: 0.8rem;
+}
+
+.weatherapp .card h3:nth-child(2) {
+	font-size: 1rem;
+	padding-top: 0px;
 }
 
 .weatherapp .header {
@@ -37,7 +47,11 @@
 	border: 1px solid #ddd;
 	padding: 10px;
 	border-radius: 5px;
-	width: 150px;
+	min-width: 150px;
 	text-align: center;
 	min-height: 200px;
+}
+
+.weatherapp .card h3:nth-child(3) {
+	font-size: 2rem;
 }

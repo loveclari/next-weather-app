@@ -34,7 +34,7 @@ export default async function Weather({ params }) {
 		// return data to client
 		<div className={styles.weatherapp}>
 			<div className={styles.header}>
-				<h1>{city}</h1>
+				<h1>{city},</h1>
 				<h2>{temperature}&deg; F</h2>
 			</div>
 			<h3>Today's Weather</h3>
