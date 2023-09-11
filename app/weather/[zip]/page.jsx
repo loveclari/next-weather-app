@@ -37,7 +37,7 @@ export default async function Weather({ params }) {
 				<h1>{city},</h1>
 				<h2>{temperature}&deg; F</h2>
 			</div>
-			<h3>Today's Weather</h3>
+			<h3>Today&apos;s Weather</h3>
 			<div className={styles.container}>
 				{todayForecast.map((forecast, index) => {
 					const time = new Date(
