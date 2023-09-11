@@ -1,6 +1,6 @@
 .weatherapp {
 	height: 100%;
-	padding: 0px 20px;
+	padding: 1px 25px;
 	background: linear-gradient(to right, #56ccf2, #2f80ed);
 	color: #ffffff;
 	font-family: "Lato", sans-serif;
@@ -36,6 +36,12 @@
 	display: flex;
 	margin: auto;
 	align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+	.weatherapp .header {
+		display: block;
+	}
 }
 
 .weatherapp .container {
