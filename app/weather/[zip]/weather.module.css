@@ -1,16 +1,19 @@
 .weatherapp {
 	height: 100%;
+	padding: 20px;
 	background: linear-gradient(to right, #56ccf2, #2f80ed);
 	color: #ffffff;
 }
 
 .weatherapp h1 {
 	display: flex;
+	font-size: 3rem;
 	justify-content: center;
 }
 
 .weatherapp h2 {
 	display: flex;
+	font-size: 3rem;
 	justify-content: center;
 	margin: 25px;
 }
@@ -20,9 +23,9 @@
 }
 
 .weatherapp .header {
-	padding-left: 20px;
-	display: inline-flex;
+	display: flex;
 	margin: auto;
+	align-items: center;
 }
 
 .weatherapp .container {

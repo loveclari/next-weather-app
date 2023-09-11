@@ -25,7 +25,7 @@ export default async function Weather({ params }) {
 		(forecast) => new Date(forecast.dt * 1000).getDate() !== today
 	);
 
-	const optionsTime = { hour: "numeric", minute: "numeric", hour12: true };
+	const optionsTime = { hour: "2-digit", minute: "2-digit", hour12: true };
 	const optionsDate = { weekday: "long", month: "long", day: "numeric" };
 
 	return (
@@ -43,9 +43,9 @@ export default async function Weather({ params }) {
 					).toLocaleTimeString(undefined, optionsTime);
 					return (
 						<div key={index} className={styles.card}>
-							<div>{forecast.dt_txt}</div>
-							<div>{Math.round(forecast.main.temp)}&deg; F</div>
-							<div>{forecast.weather[0].description}</div>
+							<h3>{time}</h3>
+							<h3>{Math.round(forecast.main.temp)}&deg; F</h3>
+							<p>{forecast.weather[0].description}</p>
 						</div>
 					);
 				})}
@@ -62,11 +62,10 @@ export default async function Weather({ params }) {
 					).toLocaleTimeString(undefined, optionsTime);
 					return (
 						<div key={index} className={styles.card}>
-							<div>{forecast.dt_txt}</div>
 							<h3>{date}</h3>
 							<h3>{time}</h3>
-							<div>{Math.round(forecast.main.temp)}&deg; F</div>
-							<div>{forecast.weather[0].description}</div>
+							<h3>{Math.round(forecast.main.temp)}&deg; F</h3>
+							<p>{forecast.weather[0].description}</p>
 						</div>
 					);
 				})}
