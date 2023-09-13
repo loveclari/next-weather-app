@@ -25,8 +25,6 @@ export default async function Weather({ params }) {
 	const timezoneOffsetSeconds = weatherdata.city.timezone;
 	const temperature = Math.round(weatherdata.list[0].main.temp);
 
-	// const now = new Date();
-	// const localNow = new Date(now.getTime() + timezoneOffsetSeconds * 1000);
 	const today = new Date().getDate();
 
 	const todayForecast = weatherdata.list.filter(
