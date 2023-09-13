@@ -42,6 +42,13 @@
 	.weatherapp .header {
 		display: block;
 	}
+	.weatherapp h1 {
+		font-size: 4rem;
+	}
+
+	.weatherapp h2 {
+		font-size: 4rem;
+	}
 }
 
 .weatherapp .container {

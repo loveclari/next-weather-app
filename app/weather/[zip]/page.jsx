@@ -13,8 +13,20 @@ import styles from "./weather.module.css";
 export default async function Weather({ params }) {
 	const weatherdata = await getServerData({ params });
 
+	if (!weatherdata || !weatherdata.list) {
+		return (
+			<div className={styles.weatherapp}>
+				<h1>We are sorry, but - {weatherdata.message}</h1>
+			</div>
+		);
+	}
+
 	const city = weatherdata.city.name;
+	const timezoneOffsetSeconds = weatherdata.city.timezone;
 	const temperature = Math.round(weatherdata.list[0].main.temp);
+
+	// const now = new Date();
+	// const localNow = new Date(now.getTime() + timezoneOffsetSeconds * 1000);
 	const today = new Date().getDate();
 
 	const todayForecast = weatherdata.list.filter(
@@ -82,7 +94,8 @@ const getServerData = async ({ params }) => {
 	const apikey = "953739c7d481ca70528216e22f0966f5";
 
 	const response = await fetch(
-		`https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apikey}&units=imperial`
+		`https://api.openweathermap.org/data/2.5/forecast?zip=${zip},us&appid=${apikey}&units=imperial`,
+		{ cache: "no-store" }
 	);
 	const data = await response.json();
 	console.log(data);
